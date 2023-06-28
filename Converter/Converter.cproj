@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -60,6 +60,12 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+      <Value>../APP</Value>
+      <Value>../CFG</Value>
+      <Value>../HAL</Value>
+      <Value>../MCAL</Value>
+      <Value>../Utils</Value>
+      <Value>..</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -120,9 +126,70 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APP\Converter.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\Converter_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CFG\DIO_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CFG\DIO_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CFG\keyPad_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="CFG\LCD_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\KeyPad_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LCD_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\DIO.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MemMap.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="StdTypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utils\Utils.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utils\Utils.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MCAL" />
+    <Folder Include="HAL" />
+    <Folder Include="CFG" />
+    <Folder Include="APP" />
+    <Folder Include="Utils" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

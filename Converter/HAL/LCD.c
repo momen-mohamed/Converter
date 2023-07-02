@@ -172,8 +172,13 @@ void LCD_WriteNumber_4D(u16 num){
 }
 
 void LCD_WriteBinary(u8 num){
-	u8 i ,result,flag = 0;
-	for (i = 8 ; i > 0;i--)
+	u8 i ,result,flag = 0,exit_flag = 0;
+	if (num ==0)
+	{
+		LCD_WriteChar('0');
+		exit_flag = 1;
+	}
+	for (i = 8 ; i > 0 && exit_flag == 0;i--)
 	{
 		result = READ_BIT(num,i-1);
 		if (result)
